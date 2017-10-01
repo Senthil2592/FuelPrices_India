@@ -2,6 +2,7 @@ package rsklabs.com.fuelprices_india;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,5 +14,5 @@ import retrofit2.http.Path;
 public interface FuelPriceServiceInterface {
 
     @GET("cities")
-    Call<String> getCityList();
+    Call<ServiceBean> getCityList();
 }
