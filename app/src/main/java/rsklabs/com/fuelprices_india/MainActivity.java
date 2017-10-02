@@ -42,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObj = new JSONObject(str);
                     JSONArray ja = jsonObj.getJSONArray("cities");
-                    String[] arraySpinner = new String[60];
+                    String[] arraySpinner = new String[39];
                     for (int i=0; i<ja.length(); i++) {
-                        arraySpinner[i]= ja.getString(i) ;
+                        if( null != ja.getString(i) && !ja.getString(i).isEmpty()) {
+                            arraySpinner[i] = ja.getString(i);
+                        }
                     }
                     Spinner s = (Spinner) findViewById(R.id.citySpinnerId);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
