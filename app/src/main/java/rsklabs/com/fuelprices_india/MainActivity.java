@@ -6,6 +6,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -31,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         FuelPriceServiceInterface service = retrofit.create(FuelPriceServiceInterface.class);
 
-        Call<ServiceBean> cityList = null;
-
-            cityList = service.getCityList();
+        Call<ServiceBean> cityList = service.getCityList();
 
 
        Log.d("city", String.valueOf(cityList));
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServiceBean> call, Response<ServiceBean> response) {
                 String str = new Gson().toJson(response.body());
+                try {
+                    JSONObject jsonObj = new JSONObject(str);
+                    JSONArray ja = jsonObj.getJSONArray("cities");
+                    Log.i("resp", String.valueOf(ja));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Log.i("resp", str);
             }
 
