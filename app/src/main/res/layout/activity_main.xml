@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="rsklabs.com.fuelprices_india.MainActivity">
+    tools:context="rsklabs.com.fuelprices_india.MainActivity"
+    android:background="@drawable/gradient_main_activity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below= "@+id/citySpinnerId"
         android:id="@+id/selectCityId"
-        android:text="Select a city"
+        android:text="Select a City"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf ="parent"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="30dp"
         android:textSize="17dp"/>
     <Spinner
@@ -33,7 +36,9 @@
         app:layout_constraintTop_toBottomOf ="@+id/citySpinnerId"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf ="parent"
+        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +47,9 @@
         android:id="@+id/diselTextViewId"
         app:layout_constraintTop_toBottomOf ="@+id/petrolTextViewId"
         android:textStyle="bold"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf ="parent"
+        android:layout_marginLeft="5dp"/>
 
     <com.google.android.gms.ads.AdView android:id="@+id/adView1"
         android:layout_width="wrap_content"

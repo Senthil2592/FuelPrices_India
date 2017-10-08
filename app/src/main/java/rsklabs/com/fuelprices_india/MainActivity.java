@@ -1,5 +1,8 @@
 package rsklabs.com.fuelprices_india;
 
+import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
         AdView adView = (AdView)findViewById(adView1);
         AdRequest adRequest =new AdRequest.Builder().build();
@@ -77,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         final Spinner spinner = (Spinner) findViewById(R.id.citySpinnerId);
+        if(spinner.getAdapter() ==null){
+            TextView petrolTextId = (TextView) findViewById(R.id.petrolTextViewId);
+            petrolTextId.setText("Please check the internet connection.");
+        }
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
