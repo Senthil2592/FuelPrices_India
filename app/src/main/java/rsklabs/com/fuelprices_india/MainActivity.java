@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -20,6 +22,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static rsklabs.com.fuelprices_india.R.id.adView1;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -27,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        AdView adView = (AdView)findViewById(adView1);
+        AdRequest adRequest =new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://fuelpriceindia.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())

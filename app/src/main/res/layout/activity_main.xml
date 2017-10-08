@@ -44,4 +44,11 @@
         android:textStyle="bold"
         android:textSize="15dp"/>
 
+    <com.google.android.gms.ads.AdView android:id="@+id/adView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:adUnitId="@string/adUnitId"
+        app:adSize="SMART_BANNER"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
