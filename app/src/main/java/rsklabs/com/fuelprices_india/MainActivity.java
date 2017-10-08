@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
                             TextView petrolTextId = (TextView) findViewById(R.id.petrolTextViewId);
                             TextView dieselTextId = (TextView) findViewById(R.id.diselTextViewId);
                             if(jsonObj.has("petrol")) {
-                                petrolTextId.setText("Current Petrol Price: Rs." + jsonObj.getString("petrol"));
-                                dieselTextId.setText("Current Diesel Price: Rs." + jsonObj.getString("diesel"));
+                                petrolTextId.setText("Today's Petrol Price: Rs." + jsonObj.getString("petrol"));
+                                dieselTextId.setText("Today's Diesel Price: Rs." + jsonObj.getString("diesel"));
                             }else{
                                 petrolTextId.setText("Data Not available for this city.");
                                 dieselTextId.setText("");
