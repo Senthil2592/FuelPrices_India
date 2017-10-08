@@ -3,6 +3,8 @@ package rsklabs.com.fuelprices_india;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -62,6 +64,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+
+        });
+
+
+
+        final Spinner spinner = (Spinner) findViewById(R.id.citySpinnerId);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String selected = spinner.getItemAtPosition(position).toString();
+                Log.i("selectedItem", selected);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
 
         });
 
