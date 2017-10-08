@@ -12,7 +12,24 @@
         android:layout_height="30dp"
         android:textColor="#000000"
         android:background="#990073"
-
+        android:layout_marginTop="30dp"
  />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below= "@+id/citySpinnerId"
+        android:id="@+id/petrolTextViewId"
+        app:layout_constraintTop_toBottomOf ="@+id/citySpinnerId"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below= "@+id/petrolTextViewId"
+        android:id="@+id/diselTextViewId"
+        app:layout_constraintTop_toBottomOf ="@+id/petrolTextViewId"
+        android:textStyle="bold"/>
 
 </android.support.constraint.ConstraintLayout>

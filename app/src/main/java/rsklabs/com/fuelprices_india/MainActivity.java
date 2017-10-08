@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        FuelPriceServiceInterface service = retrofit.create(FuelPriceServiceInterface.class);
+       final FuelPriceServiceInterface service = retrofit.create(FuelPriceServiceInterface.class);
 
         Call<ServiceBean> cityList = service.getCityList();
 
@@ -74,7 +75,38 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 String selected = spinner.getItemAtPosition(position).toString();
-                Log.i("selectedItem", selected);
+                Call<FuelPriceOutputTO> priceList = service.getCurrentPrice(selected);
+
+                priceList.enqueue(new Callback<FuelPriceOutputTO>() {
+                    @Override
+                    public void onResponse(Call<FuelPriceOutputTO> call, Response<FuelPriceOutputTO> response) {
+                        String str = new Gson().toJson(response.body());
+
+                        try {
+                            JSONObject jsonObj = new JSONObject(str);
+                            TextView petrolTextId = (TextView) findViewById(R.id.petrolTextViewId);
+                            TextView dieselTextId = (TextView) findViewById(R.id.diselTextViewId);
+                            if(jsonObj.has("petrol")) {
+                                petrolTextId.setText("Current Petrol Price: Rs." + jsonObj.getString("petrol"));
+                                dieselTextId.setText("Current Diesel Price: Rs." + jsonObj.getString("diesel"));
+                            }else{
+                                petrolTextId.setText("Data Not available for this city.");
+                                dieselTextId.setText("");
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<FuelPriceOutputTO> call, Throwable t) {
+
+                    }
+
+
+                });
+
             }
 
             @Override
